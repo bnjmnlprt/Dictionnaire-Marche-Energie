@@ -132,6 +132,76 @@
         background-color: #1d4ed8;
       }
 
+      /* Style pour l'image dans la définition */
+      .definition-image {
+        max-width: 100%;
+        height: auto;
+        margin-top: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+      }
+
+      /* Styles pour le calculateur LCOE */
+      .lcoe-calculator {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        background-color: #f8fafc;
+      }
+      .lcoe-calculator h3 {
+        margin-top: 0;
+      }
+      .lcoe-form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .lcoe-form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .lcoe-form-group label {
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+        color: #475569;
+      }
+      .lcoe-form-group input {
+        padding: 0.5rem;
+        border-radius: 6px;
+        border: 1px solid #cbd5e1;
+      }
+      .lcoe-result {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .lcoe-result-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1e40af;
+      }
+
+      /* Styles pour le tableau */
+      .definition-table {
+        width: 100%;
+        margin-top: 1.5rem;
+        border-collapse: collapse;
+        border: 1px solid #e2e8f0;
+      }
+      .definition-table th, .definition-table td {
+        border: 1px solid #e2e8f0;
+        padding: 0.75rem;
+        text-align: left;
+      }
+      .definition-table th {
+        background-color: #f8fafc;
+        font-weight: 600;
+      }
+
     </style>
   </head>
   <body>
@@ -171,8 +241,22 @@
           ]
         },
         { "id": "bancabilite", "terme": "Bancabilité", "definition_sommaire": "Qualité d'un projet jugé suffisamment robuste et prévisible pour être financé par une banque.", "analyse_detaillee": "Un projet est \"bancable\" si ses risques (techniques, réglementaires, de marché) sont maîtrisés et si ses flux de revenus futurs sont jugés stables et suffisants pour rembourser la dette. Les contrats à long terme (PPA, OA) améliorent la bancabilité." },
-        { "id": "bess", "terme": "BESS (Battery Energy Storage System)", "definition_sommaire": "Système de stockage d'énergie par batteries.", "analyse_detaillee": "Un BESS est composé de batteries (généralement Lithium-ion), d'un onduleur/chargeur (PCS) et d'un système de pilotage (EMS). Il permet de stocker l'électricité pour la restituer plus tard." },
-        { "id": "btm", "terme": "BTM (Behind-the-Meter)", "definition_sommaire": "Désigne les actifs énergétiques (production, stockage) situés \"derrière le compteur\" d'un site de consommation.", "analyse_detaillee": "Un actif BTM est directement connecté au réseau interne du client. Sa valorisation principale vient de l'optimisation de la facture énergétique du site (augmentation de l'autoconsommation, écrêtage de pointe...)." },
+        { 
+          "id": "bess", 
+          "terme": "BESS (Battery Energy Storage System)", 
+          "definition_sommaire": "Système de stockage d'énergie par batteries.", 
+          "analyse_detaillee": "Un BESS est composé de batteries (généralement Lithium-ion), d'un onduleur/chargeur (PCS) et d'un système de pilotage (EMS). Il permet de stocker l'électricité pour la restituer plus tard.",
+          "liens_documents": [
+            { "url": "https://notebooklm.google.com/notebook/dfe76cf8-efc5-428d-951f-b48c648e94ca", "texte": "Notebook BESS" }
+          ]
+        },
+        { 
+          "id": "btm", 
+          "terme": "BTM (Behind-the-Meter)", 
+          "definition_sommaire": "Désigne les actifs énergétiques (production, stockage) situés \"derrière le compteur\" d'un site de consommation.", 
+          "analyse_detaillee": "Un actif BTM est directement connecté au réseau interne du client. Sa valorisation principale vient de l'optimisation de la facture énergétique du site (augmentation de l'autoconsommation, écrêtage de pointe...).",
+          "image_url": "https://mlawo68xej2x.i.optimole.com/cb:LjSm.f332/w:1024/h:577/q:mauto/f:best/ig:avif/https://www.power-sonic.com/wp-content/uploads/2023/07/behind-the-meter-BTM-vs-in-front-of-the-meter-FTM.png"
+        },
         { "id": "c-rate", "terme": "C-Rate", "definition_sommaire": "Ratio indiquant la vitesse de charge ou de décharge d'une batterie par rapport à sa capacité.", "analyse_detaillee": "Un C-Rate de 1C signifie qu'une batterie peut se charger ou se décharger complètement en 1 heure. Un C-Rate de 2C signifie une décharge en 30 minutes. Un C-Rate de 0.5C (ou C/2) signifie une décharge en 2 heures." },
         { "id": "capex", "terme": "CAPEX (Capital Expenditure)", "definition_sommaire": "Dépenses d'investissement initiales pour la construction d'un projet.", "analyse_detaillee": "Le CAPEX comprend tous les coûts liés à l'acquisition des équipements (modules PV, batteries, onduleurs) et à la construction de la centrale (ingénierie, installation, raccordement)." },
         { 
@@ -184,7 +268,13 @@
             { "url": "https://helexia.sharepoint.com/:b:/r/sites/bu-hlxfr-helexia_france/Documents%20partages/3.%20SUPPORT/S4.%20JURIDIQUE/Dictionnaire/CARDI/Enedis-FOR-RES_17E.pdf?csf=1&web=1&e=VxeBqu", "texte": "Conditions générales CARD-I" }
           ]
         },
-        { "id": "complement-de-remuneration", "terme": "Complément de Rémunération (CR)", "definition_sommaire": "Mécanisme de soutien où le producteur vend son énergie sur le marché et reçoit une prime de l'État.", "analyse_detaillee": "Le producteur est exposé aux prix du marché Spot. Si le prix de marché moyen (M0) est inférieur à un tarif de référence (T) obtenu lors d'un appel d'offres, l'État verse une prime (T-M0). Si le prix de marché est supérieur, le producteur rembourse l'excédent (M0 - T)." },
+        { 
+          "id": "complement-de-remuneration", 
+          "terme": "Complément de Rémunération (CR)", 
+          "definition_sommaire": "Mécanisme de soutien où le producteur vend son énergie sur le marché et reçoit une prime de l'État.", 
+          "analyse_detaillee": "Le producteur est exposé aux prix du marché Spot. Si le prix de marché moyen (M0) est inférieur à un tarif de référence (T) obtenu lors d'un appel d'offres, l'État verse une prime (T-M0). Si le prix de marché est supérieur, le producteur rembourse l'excédent (M0 - T).",
+          "image_url": "https://www.atlante.fr/wp-content/uploads/2020/09/remuneration_producteurs_complement-1024x655.png"
+        },
         { "id": "courbe-de-charge", "terme": "Courbe de charge", "definition_sommaire": "Représentation graphique de la puissance électrique consommée par un site sur une période donnée.", "analyse_detaillee": "La courbe de charge, généralement mesurée à un pas de temps de 10 ou 30 minutes, est l'empreinte digitale de la consommation d'un site. Elle montre les pics, les creux et les schémas de consommation." },
         { "id": "cre", "terme": "CRE (Commission de Régulation de l'Énergie)", "definition_sommaire": "Autorité administrative indépendante chargée de veiller au bon fonctionnement des marchés de l'énergie en France.", "analyse_detaillee": "La CRE a de nombreuses missions, dont la définition des tarifs d'accès aux réseaux (TURPE), la surveillance des marchés de gros et de détail, et l'organisation des appels d'offres pour les énergies renouvelables." },
         { "id": "dod", "terme": "DoD (Depth of Discharge)", "definition_sommaire": "Profondeur de décharge. Pourcentage de la capacité totale d'une batterie qui a été déchargée.", "analyse_detaillee": "Un DoD de 80% signifie que 80% de l'énergie stockée a été utilisée. Limiter le DoD maximal (par exemple, ne jamais décharger la batterie à plus de 90%) permet de prolonger sa durée de vie." },
@@ -200,10 +290,28 @@
         },
         { "id": "efficacite-aller-retour", "terme": "Efficacité Aller-Retour", "definition_sommaire": "Ratio entre l'énergie restituée par une batterie et l'énergie nécessaire pour la charger.", "analyse_detaillee": "Aussi appelée \"Round-Trip Efficiency\". Une efficacité de 90% signifie que pour 100 kWh injectés dans la batterie, 90 kWh peuvent être restitués. Le reste est perdu, principalement sous forme de chaleur." },
         { "id": "ems", "terme": "EMS (Energy Management System)", "definition_sommaire": "Système de pilotage intelligent qui gère les flux d'énergie d'une installation (PV, BESS, consommation du site).", "analyse_detaillee": "L'EMS est le \"cerveau\" d'un projet BESS. C'est un logiciel qui, sur la base de prévisions (production PV, consommation, prix de marché) et d'algorithmes d'optimisation, décide en temps réel quand charger ou décharger la batterie pour maximiser les revenus ou les économies." },
-        { "id": "ftm", "terme": "FTM (Front-of-the-Meter)", "definition_sommaire": "Désigne les actifs énergétiques (généralement de grande taille) directement raccordés au réseau de transport ou de distribution.", "analyse_detaillee": "Contrairement aux actifs BTM, un actif FTM n'est pas lié à un site de consommation spécifique. Sa seule finalité est d'interagir avec les marchés de l'énergie (arbitrage, services système...)." },
-        { "id": "garanties-d-origine", "terme": "Garanties d'Origine (GO)", "definition_sommaire": "Certificat électronique prouvant qu'un MWh d'électricité a été produit à partir d'une source d'énergie renouvelable.", "analyse_detaillee": "Les GO sont le seul moyen de tracer la part d'électricité verte dans un mix de fourniture. Elles peuvent être vendues séparément de l'énergie physique." },
+        { 
+          "id": "ftm", 
+          "terme": "FTM (Front-of-the-Meter)", 
+          "definition_sommaire": "Désigne les actifs énergétiques (généralement de grande taille) directement raccordés au réseau de transport ou de distribution.", 
+          "analyse_detaillee": "Contrairement aux actifs BTM, un actif FTM n'est pas lié à un site de consommation spécifique. Sa seule finalité est d'interagir avec les marchés de l'énergie (arbitrage, services système...).",
+          "image_url": "https://mlawo68xej2x.i.optimole.com/cb:LjSm.f332/w:1024/h:577/q:mauto/f:best/ig:avif/https://www.power-sonic.com/wp-content/uploads/2023/07/behind-the-meter-BTM-vs-in-front-of-the-meter-FTM.png"
+        },
+        { 
+          "id": "garanties-d-origine", 
+          "terme": "Garanties d'Origine (GO)", 
+          "definition_sommaire": "Certificat électronique prouvant qu'un MWh d'électricité a été produit à partir d'une source d'énergie renouvelable.", 
+          "analyse_detaillee": "Les GO sont le seul moyen de tracer la part d'électricité verte dans un mix de fourniture. Elles peuvent être vendues séparément de l'énergie physique.",
+          "html_content": "<h3>Sommaire</h3><table class='definition-table'><thead><tr><th>Caractéristique</th><th>Description</th><th>Impact / Valeur</th></tr></thead><tbody><tr><td><strong>Type de GO</strong></td><td>Solaire, Éolien, Hydraulique, etc.</td><td>Certains clients exigent un type spécifique.</td></tr><tr><td><strong>Pays d'émission</strong></td><td>France, Europe...</td><td>Les GO françaises ont souvent une prime.</td></tr><tr><td><strong>Année de production</strong></td><td>Correspond à l'année de consommation</td><td>Critère pour les offres 'vertes' premium.</td></tr></tbody></table>"
+        },
         { "id": "icpe", "terme": "ICPE (Installation Classée pour la Protection de l'Environnement)", "definition_sommaire": "Nomenclature administrative qui soumet certaines installations (dont le stockage) à des régimes d'autorisation en fonction des risques.", "analyse_detaillee": "En fonction de leur capacité et de leur technologie, les BESS peuvent être soumis à un régime de Déclaration, d'Enregistrement ou d'Autorisation environnementale. Chaque régime impose des contraintes techniques (sécurité incendie, etc.) et des délais d'instruction administratifs." },
-        { "id": "lcoe", "terme": "LCOE (Levelized Cost of Energy)", "definition_sommaire": "Coût actualisé de l'énergie. Coût total d'une centrale sur sa durée de vie, divisé par l'énergie totale produite.", "analyse_detaillee": "Le LCOE (€/MWh) est un indicateur qui permet de comparer le coût de production de différentes technologies (PV, éolien, gaz...). Il intègre le CAPEX initial, l'OPEX, le coût du financement et la production sur toute la durée de vie de l'actif." },
+        { 
+          "id": "lcoe", 
+          "terme": "LCOE (Levelized Cost of Energy)", 
+          "definition_sommaire": "Coût actualisé de l'énergie. Coût total d'une centrale sur sa durée de vie, divisé par l'énergie totale produite.", 
+          "analyse_detaillee": "Le LCOE (€/MWh) est un indicateur qui permet de comparer le coût de production de différentes technologies (PV, éolien, gaz...). Il intègre le CAPEX initial, l'OPEX, le coût du financement et la production sur toute la durée de vie de l'actif.",
+          "has_calculator": "lcoe"
+        },
         { "id": "marche-spot", "terme": "Marché Spot (EPEX Spot)", "definition_sommaire": "Bourse européenne de l'électricité où s'échangent des blocs d'énergie pour une livraison le lendemain (Day-Ahead).", "analyse_detaillee": "C'est le principal marché de gros de l'électricité où les prix sont fixés heure par heure. La volatilité de ces prix crée des opportunités d'arbitrage: acheter/charger quand le prix est bas, vendre/décharger quand il est haut." },
         { "id": "mecanisme-de-capacite", "terme": "Mécanisme de Capacité (MécaCapa)", "definition_sommaire": "Marché rémunérant la disponibilité des moyens de production et d'effacement pendant les périodes de pointe hivernale.", "analyse_detaillee": "Le MécaCapa vise à garantir la sécurité d'approvisionnement. Les producteurs et opérateurs d'effacement peuvent faire certifier leur puissance disponible par RTE, obtenant des \"garanties de capacité\". Les fournisseurs sont obligés d'acheter ces garanties pour couvrir la consommation de pointe de leurs clients." },
         { "id": "obligation-d-achat", "terme": "Obligation d'Achat (OA)", "definition_sommaire": "Mécanisme de soutien où un acheteur obligé (historiquement EDF OA) achète l'intégralité de la production à un tarif fixe et régulé.", "analyse_detaillee": "Ce modèle garantit un revenu prévisible et sans risque de marché. Il était appliqué via le guichet S21 pour les installations de 100 à 500 kWc, maintenant remplacé par l'AOS en CR." },
@@ -213,8 +321,20 @@
         { "id": "ppa", "terme": "PPA (Power Purchase Agreement)", "definition_sommaire": "Contrat de vente d'électricité à long terme conclu directement entre un producteur et un consommateur final.", "analyse_detaillee": "Un PPA permet à un consommateur de sécuriser son approvisionnement en électricité verte à un prix fixe ou indexé sur le long terme, et au producteur de sécuriser ses revenus, facilitant ainsi le financement de sa centrale (\"bancabilité\")." },
         { "id": "pre", "terme": "PRE+/PRE-", "definition_sommaire": "Prix de Règlement des Écarts. Prix auquel RTE règle les écarts positifs (PRE+) et négatifs (PRE-).", "analyse_detaillee": "Le PRE est le prix auquel RTE valorise les actions d'équilibrage en temps réel. Le PRE+ rémunère les acteurs qui ont aidé le réseau (écart positif). Le PRE- pénalise ceux qui ont mis le réseau en difficulté (écart négatif)." },
         { "id": "ptf", "terme": "PTF (Proposition Technique et Financière)", "definition_sommaire": "Document émis par Enedis en réponse à une demande de raccordement, détaillant la solution technique et le coût.", "analyse_detaillee": "La PTF est l'offre formelle du gestionnaire de réseau pour le raccordement d'un projet. Son acceptation par le producteur vaut contrat." },
-        { "id": "reserve-secondaire-afrr", "terme": "Réserve Secondaire (aFRR)", "definition_sommaire": "Automatic Frequency Restoration Reserve. Activation automatique en quelques minutes pour ramener la fréquence à 50 Hz.", "analyse_detaillee": "L'aFRR est activée par un signal centralisé de RTE pour corriger l'équilibre production/consommation et ainsi restaurer la fréquence nominale, tout en relevant la réserve primaire. Elle est activée plus lentement que la FCR mais sur des durées plus longues." },
-        { "id": "reserve-primaire-fcr", "terme": "Réserve Primaire (FCR)", "definition_sommaire": "Frequency Containment Reserve. Activation automatique en quelques secondes pour stopper une déviation de fréquence.", "analyse_detaillee": "La FCR est la première ligne de défense du réseau. Elle est activée automatiquement par les actifs participants dès qu'ils détectent une déviation de la fréquence. C'est un service qui rémunère principalement la disponibilité." },
+        { 
+          "id": "reserve-secondaire-afrr", 
+          "terme": "Réserve Secondaire (aFRR)", 
+          "definition_sommaire": "Automatic Frequency Restoration Reserve. Activation automatique en quelques minutes pour ramener la fréquence à 50 Hz.", 
+          "analyse_detaillee": "L'aFRR est activée par un signal centralisé de RTE pour corriger l'équilibre production/consommation et ainsi restaurer la fréquence nominale, tout en relevant la réserve primaire. Elle est activée plus lentement que la FCR mais sur des durées plus longues.",
+          "image_url": "https://www.services-rte.com/files/live/sites/services-rte/files/pictures/fond/Schemas%20RTE_D_Plan%20de%20travail%206.png"
+        },
+        { 
+          "id": "reserve-primaire-fcr", 
+          "terme": "Réserve Primaire (FCR)", 
+          "definition_sommaire": "Frequency Containment Reserve. Activation automatique en quelques secondes pour stopper une déviation de fréquence.", 
+          "analyse_detaillee": "La FCR est la première ligne de défense du réseau. Elle est activée automatiquement par les actifs participants dès qu'ils détectent une déviation de la fréquence. C'est un service qui rémunère principalement la disponibilité.",
+          "image_url": "https://www.services-rte.com/files/live/sites/services-rte/files/pictures/fond/Schemas%20RTE_D_Plan%20de%20travail%206.png"
+        },
         { "id": "responsable-d-equilibre", "terme": "Responsable d'Équilibre (RE)", "definition_sommaire": "Acteur de marché, agréé par RTE, qui est financièrement responsable des écarts entre l'énergie prévue et l'énergie réellement injectée/soutirée par son périmètre.", "analyse_detaillee": "Le RE s'engage auprès de RTE à prévoir la production et la consommation de son portefeuille d'actifs (son \"périmètre d'équilibre\"). Si ses prévisions sont fausses, il paie des pénalités (ou reçoit un gain) à RTE pour les écarts constatés, valorisés au prix PRE+ ou PRE-." },
         { "id": "revenue-stacking", "terme": "Revenue Stacking", "definition_sommaire": "Stratégie consistant à cumuler plusieurs sources de revenus pour un même actif de flexibilité (BESS ou effacement).", "analyse_detaillee": "Un BESS peut simultanément optimiser l'autoconsommation d'un client (BTM), participer au Mécanisme de Capacité, et fournir des services système à RTE (FTM). L'enjeu est de hiérarchiser et d'arbitrer entre ces différentes sources de revenus." },
         { "id": "services-systeme", "terme": "Services Système", "definition_sommaire": "Services rémunérés par RTE pour garantir l'équilibre et la stabilité du réseau électrique en temps réel (fréquence, tension).", "analyse_detaillee": "Ces services visent à maintenir la fréquence (50 Hz) et la tension du réseau. Ils sont hiérarchisés par leur vitesse d'activation: Réserve Primaire (FCR), Secondaire (aFRR) et Tertiaire (mFRR). Ils nécessitent des actifs très réactifs." },
@@ -233,6 +353,66 @@
         { "id": "van", "terme": "VAN (Valeur Actuelle Nette)", "definition_sommaire": "Indicateur financier mesurant la création de valeur d'un projet.", "analyse_detaillee": "La VAN est la somme des flux de trésorerie futurs d'un projet, actualisés à un certain taux (généralement le coût du capital), moins l'investissement initial. Si la VAN est positive, le projet est créateur de valeur." }
       ];
 
+      // Composant pour le calculateur LCOE
+      const LcoeCalculator = () => {
+        const { useState, useMemo } = React;
+        const [capex, setCapex] = useState(1000000);
+        const [opex, setOpex] = useState(20000);
+        const [production, setProduction] = useState(1200);
+        const [duree, setDuree] = useState(20);
+        const [taux, setTaux] = useState(5);
+
+        const lcoe = useMemo(() => {
+          const r = taux / 100;
+          let totalCost = parseFloat(capex) || 0;
+          let totalEnergy = 0;
+
+          if (duree > 0 && production > 0) {
+            for (let t = 1; t <= duree; t++) {
+              totalCost += (parseFloat(opex) || 0) / Math.pow(1 + r, t);
+              totalEnergy += (parseFloat(production) || 0) / Math.pow(1 + r, t);
+            }
+            if (totalEnergy === 0) return 0;
+            return totalCost / totalEnergy;
+          }
+          return 0;
+        }, [capex, opex, production, duree, taux]);
+
+        return (
+          <div className="lcoe-calculator">
+            <h3>Calculateur de LCOE</h3>
+            <div className="lcoe-form-grid">
+              <div className="lcoe-form-group">
+                <label>CAPEX Total (€)</label>
+                <input type="number" value={capex} onChange={(e) => setCapex(e.target.value)} />
+              </div>
+              <div className="lcoe-form-group">
+                <label>OPEX Annuel (€)</label>
+                <input type="number" value={opex} onChange={(e) => setOpex(e.target.value)} />
+              </div>
+              <div className="lcoe-form-group">
+                <label>Production Annuelle (MWh)</label>
+                <input type="number" value={production} onChange={(e) => setProduction(e.target.value)} />
+              </div>
+              <div className="lcoe-form-group">
+                <label>Durée de vie (années)</label>
+                <input type="number" value={duree} onChange={(e) => setDuree(e.target.value)} />
+              </div>
+              <div className="lcoe-form-group">
+                <label>Taux d'actualisation (%)</label>
+                <input type="number" value={taux} onChange={(e) => setTaux(e.target.value)} />
+              </div>
+            </div>
+            <div className="lcoe-result">
+              <div>LCOE Résultant</div>
+              <div className="lcoe-result-value">
+                {lcoe.toFixed(2)} €/MWh
+              </div>
+            </div>
+          </div>
+        );
+      };
+
       // Composant pour la carte de définition
       const DefinitionCard = ({ term }) => {
         if (!term) {
@@ -245,7 +425,15 @@
             <p>{term.definition_sommaire}</p>
             <h3>Analyse Détaillée</h3>
             <p>{term.analyse_detaillee}</p>
-            {/* Affiche le lien uniquement si il existe dans les données */}
+            {term.html_content && (
+              <div dangerouslySetInnerHTML={{ __html: term.html_content }} />
+            )}
+            {term.image_url && (
+              <img src={term.image_url} alt={term.terme} className="definition-image" />
+            )}
+            {/* Affiche le calculateur si spécifié dans les données */}
+            {term.has_calculator === 'lcoe' && <LcoeCalculator />}
+            {/* Affiche les liens si ils existent dans les données */}
             {term.liens_documents && term.liens_documents.length > 0 && (
               <div>
                 <h3>Pour aller plus loin</h3>
