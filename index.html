@@ -113,6 +113,25 @@
       .main-content h1 {
         margin-top: 0;
       }
+      
+      /* Style pour les liens "Pour aller plus loin" */
+      .external-link {
+        display: inline-block;
+        margin-top: 1rem;
+        margin-right: 0.5rem; /* Espace entre les boutons */
+        padding: 0.6rem 1.2rem;
+        background-color: #1e40af;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: background-color 0.2s;
+      }
+      
+      .external-link:hover {
+        background-color: #1d4ed8;
+      }
+
     </style>
   </head>
   <body>
@@ -132,8 +151,25 @@
       // Les données du dictionnaire sont directement dans le code
       const termsData = [
         { "id": "agregation", "terme": "Agrégation", "definition_sommaire": "Regrouper plusieurs sites (production, consommation) pour les valoriser comme une seule entité sur les marchés.", "analyse_detaillee": "L'agrégation mutualise la capacité d'actifs décentralisés (PV, BESS, effacement) pour atteindre la taille critique nécessaire pour accéder aux marchés de l'énergie (Spot, capacité, services système)." },
-        { "id": "ao-cre", "terme": "AO CRE (Appel d'Offres CRE)", "definition_sommaire": "Procédure concurrentielle menée par la CRE pour attribuer un soutien public à des projets d'énergies renouvelables.", "analyse_detaillee": "Les développeurs soumettent des offres pour leurs projets, qui sont sélectionnées sur la base de critères définis (prix, bilan carbone, etc.). Les lauréats bénéficient d'un contrat de Complément de Rémunération sur 20 ans." },
-        { "id": "aos", "terme": "AOS (Appel d'Offres Simplifié)", "definition_sommaire": "Appel d'offres spécifique pour les projets PV sur bâtiments et ombrières entre 100 et 500 kWc.", "analyse_detaillee": "Successeur du guichet S21, l'AOS est une procédure concurrentielle basée uniquement sur le critère du prix. Les lauréats obtiennent un contrat de Complément de Rémunération." },
+        { 
+          "id": "ao-cre", 
+          "terme": "AO CRE (Appel d'Offres CRE)", 
+          "definition_sommaire": "Procédure concurrentielle menée par la CRE pour attribuer un soutien public à des projets d'énergies renouvelables.", 
+          "analyse_detaillee": "Les développeurs soumettent des offres pour leurs projets, qui sont sélectionnées sur la base de critères définis (prix, bilan carbone, etc.). Les lauréats bénéficient d'un contrat de Complément de Rémunération sur 20 ans.",
+          "liens_documents": [
+            { "url": "https://www.cre.fr/Documents/Deliberations/Cahier-des-charges-de-l-appel-d-offres-portant-sur-la-realisation-et-l-exploitation-d-installations-de-production-d-electricite-a-partir-de-l-energie-solaire-photovoltaique-d-une-puissance-superieure-a-500-kwc", "texte": "Voir un exemple de cahier des charges CRE" }
+          ]
+        },
+        { 
+          "id": "aos", 
+          "terme": "AOS (Appel d'Offres Simplifié)", 
+          "definition_sommaire": "Appel d'offres spécifique pour les projets PV sur bâtiments et ombrières entre 100 et 500 kWc.", 
+          "analyse_detaillee": "Successeur du guichet S21, l'AOS est une procédure concurrentielle basée uniquement sur le critère du prix. Les lauréats obtiennent un contrat de Complément de Rémunération.",
+          "liens_documents": [
+            { "url": "https://helexia.sharepoint.com/:b:/r/sites/bu-hlxfr-helexia_france/Documents%20partages/3.%20SUPPORT/S4.%20JURIDIQUE/Dictionnaire/AOS/Note%20juridique%20-%20AOS%20CRE%20MaJ%202025.08.07.pdf?csf=1&web=1&e=9JDeDB", "texte": "Note juridique - Août 2025" },
+            { "url": "https://helexia.sharepoint.com/:b:/r/sites/bu-hlxfr-helexia_france/Documents%20partages/3.%20SUPPORT/S4.%20JURIDIQUE/Dictionnaire/AOS/CDC_AOS_P1.pdf?csf=1&web=1&e=FkLQIW", "texte": "Cahier des charges P1" }
+          ]
+        },
         { "id": "bancabilite", "terme": "Bancabilité", "definition_sommaire": "Qualité d'un projet jugé suffisamment robuste et prévisible pour être financé par une banque.", "analyse_detaillee": "Un projet est \"bancable\" si ses risques (techniques, réglementaires, de marché) sont maîtrisés et si ses flux de revenus futurs sont jugés stables et suffisants pour rembourser la dette. Les contrats à long terme (PPA, OA) améliorent la bancabilité." },
         { "id": "bess", "terme": "BESS (Battery Energy Storage System)", "definition_sommaire": "Système de stockage d'énergie par batteries.", "analyse_detaillee": "Un BESS est composé de batteries (généralement Lithium-ion), d'un onduleur/chargeur (PCS) et d'un système de pilotage (EMS). Il permet de stocker l'électricité pour la restituer plus tard." },
         { "id": "btm", "terme": "BTM (Behind-the-Meter)", "definition_sommaire": "Désigne les actifs énergétiques (production, stockage) situés \"derrière le compteur\" d'un site de consommation.", "analyse_detaillee": "Un actif BTM est directement connecté au réseau interne du client. Sa valorisation principale vient de l'optimisation de la facture énergétique du site (augmentation de l'autoconsommation, écrêtage de pointe...)." },
@@ -145,7 +181,15 @@
         { "id": "cre", "terme": "CRE (Commission de Régulation de l'Énergie)", "definition_sommaire": "Autorité administrative indépendante chargée de veiller au bon fonctionnement des marchés de l'énergie en France.", "analyse_detaillee": "La CRE a de nombreuses missions, dont la définition des tarifs d'accès aux réseaux (TURPE), la surveillance des marchés de gros et de détail, et l'organisation des appels d'offres pour les énergies renouvelables." },
         { "id": "dod", "terme": "DoD (Depth of Discharge)", "definition_sommaire": "Profondeur de décharge. Pourcentage de la capacité totale d'une batterie qui a été déchargée.", "analyse_detaillee": "Un DoD de 80% signifie que 80% de l'énergie stockée a été utilisée. Limiter le DoD maximal (par exemple, ne jamais décharger la batterie à plus de 90%) permet de prolonger sa durée de vie." },
         { "id": "ecart", "terme": "Écart (Positif / Négatif)", "definition_sommaire": "Différence en temps réel entre la prévision d'injection/soutirage d'un RE et la mesure constatée.", "analyse_detaillee": "Un écart positif signifie que le périmètre du RE a injecté plus (ou soutiré moins) que prévu, aidant ainsi le réseau. Un écart négatif signifie qu'il a injecté moins (ou soutiré plus) que prévu, pénalisant le réseau." },
-        { "id": "effacement-de-consommation", "terme": "Effacement de Consommation", "definition_sommaire": "Action de réduire temporairement et volontairement la consommation d'électricité pour soulager le réseau.", "analyse_detaillee": "L'effacement est une alternative à l'augmentation de la production lors des pics de demande. Un site industriel peut, par exemple, décaler un processus non-critique. Cette flexibilité est une ressource qui peut être valorisée sur plusieurs marchés, notamment le Mécanisme de Capacité et le Mécanisme d'Ajustement." },
+        { 
+          "id": "effacement-de-consommation", 
+          "terme": "Effacement de Consommation", 
+          "definition_sommaire": "Action de réduire temporairement et volontairement la consommation d'électricité pour soulager le réseau.", 
+          "analyse_detaillee": "L'effacement est une alternative à l'augmentation de la production lors des pics de demande. Un site industriel peut, par exemple, décaler un processus non-critique. Cette flexibilité est une ressource qui peut être valorisée sur plusieurs marchés, notamment le Mécanisme de Capacité et le Mécanisme d'Ajustement.",
+          "liens_documents": [
+            { "url": "https://helexia.sharepoint.com/:b:/r/sites/bu-hlxfr-helexia_france/Documents%20partages/3.%20SUPPORT/S4.%20JURIDIQUE/Dictionnaire/Effacement/L%27Effacement%20%C3%89lectrique%20en%20France%20-%20Principe,%20March%C3%A9%20et%20Mon%C3%A9tisation.pdf?csf=1&web=1&e=PUR4Og", "texte": "Principes de l'Effacement" }
+          ]
+        },
         { "id": "efficacite-aller-retour", "terme": "Efficacité Aller-Retour", "definition_sommaire": "Ratio entre l'énergie restituée par une batterie et l'énergie nécessaire pour la charger.", "analyse_detaillee": "Aussi appelée \"Round-Trip Efficiency\". Une efficacité de 90% signifie que pour 100 kWh injectés dans la batterie, 90 kWh peuvent être restitués. Le reste est perdu, principalement sous forme de chaleur." },
         { "id": "ems", "terme": "EMS (Energy Management System)", "definition_sommaire": "Système de pilotage intelligent qui gère les flux d'énergie d'une installation (PV, BESS, consommation du site).", "analyse_detaillee": "L'EMS est le \"cerveau\" d'un projet BESS. C'est un logiciel qui, sur la base de prévisions (production PV, consommation, prix de marché) et d'algorithmes d'optimisation, décide en temps réel quand charger ou décharger la batterie pour maximiser les revenus ou les économies." },
         { "id": "ftm", "terme": "FTM (Front-of-the-Meter)", "definition_sommaire": "Désigne les actifs énergétiques (généralement de grande taille) directement raccordés au réseau de transport ou de distribution.", "analyse_detaillee": "Contrairement aux actifs BTM, un actif FTM n'est pas lié à un site de consommation spécifique. Sa seule finalité est d'interagir avec les marchés de l'énergie (arbitrage, services système...)." },
@@ -169,7 +213,15 @@
         { "id": "soc", "terme": "SoC (State of Charge)", "definition_sommaire": "État de charge. Pourcentage de la capacité restante dans une batterie.", "analyse_detaillee": "Le SoC est l'équivalent de la jauge de carburant d'une voiture. Un SoC de 100% signifie que la batterie est pleine, un SoC de 0% qu'elle est vide. Le pilotage d'un BESS consiste à gérer activement son SoC en fonction des opportunités de marché." },
         { "id": "spv", "terme": "SPV (Special Purpose Vehicle)", "definition_sommaire": "Société de Projet. Entité juridique créée spécifiquement pour détenir et exploiter un ou plusieurs actifs énergétiques.", "analyse_detaillee": "La création d'une SPV permet d'isoler les risques financiers et opérationnels du projet du reste des activités de la société mère. C'est une structure standard dans le financement de projet." },
         { "id": "tri", "terme": "TRI (Taux de Rentabilité Interne)", "definition_sommaire": "Indicateur financier mesurant la rentabilité d'un investissement. Taux d'actualisation pour lequel la VAN est nulle.", "analyse_detaillee": "Le TRI, exprimé en pourcentage, représente le rendement annuel moyen d'un projet. Un projet est considéré comme viable si son TRI est supérieur au coût du capital (ou à un seuil de rentabilité défini par l'entreprise)." },
-        { "id": "turpe", "terme": "TURPE", "definition_sommaire": "Tarif d'Utilisation des Réseaux Publics d'Électricité, facturé pour l'acheminement de l'électricité.", "analyse_detaillee": "Le TURPE couvre les coûts des réseaux de transport (RTE) et de distribution (Enedis). Sa structure complexe (puissance, énergie, horosaisonnalité) en fait un levier d'optimisation." },
+        { 
+          "id": "turpe", 
+          "terme": "TURPE", 
+          "definition_sommaire": "Tarif d'Utilisation des Réseaux Publics d'Électricité, facturé pour l'acheminement de l'électricité.", 
+          "analyse_detaillee": "Le TURPE couvre les coûts des réseaux de transport (RTE) et de distribution (Enedis). Sa structure complexe (puissance, énergie, horosaisonnalité) en fait un levier d'optimisation.",
+          "liens_documents": [
+            { "url": "https://helexia.sharepoint.com/:b:/r/sites/bu-hlxfr-helexia_france/Documents%20partages/3.%20SUPPORT/S4.%20JURIDIQUE/Dictionnaire/TURPE/TURPE_7_HTA-BT.pdf?csf=1&web=1&e=3zqajR", "texte": "TURPE 7" }
+          ]
+        },
         { "id": "van", "terme": "VAN (Valeur Actuelle Nette)", "definition_sommaire": "Indicateur financier mesurant la création de valeur d'un projet.", "analyse_detaillee": "La VAN est la somme des flux de trésorerie futurs d'un projet, actualisés à un certain taux (généralement le coût du capital), moins l'investissement initial. Si la VAN est positive, le projet est créateur de valeur." }
       ];
 
@@ -185,6 +237,23 @@
             <p>{term.definition_sommaire}</p>
             <h3>Analyse Détaillée</h3>
             <p>{term.analyse_detaillee}</p>
+            {/* Affiche le lien uniquement si il existe dans les données */}
+            {term.liens_documents && term.liens_documents.length > 0 && (
+              <div>
+                <h3>Pour aller plus loin</h3>
+                {term.liens_documents.map((lien, index) => (
+                  <a 
+                    key={index}
+                    href={lien.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="external-link"
+                  >
+                    {lien.texte || 'Consulter le document'}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         );
       };
