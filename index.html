@@ -315,7 +315,7 @@
             "terme": "Complément de Rémunération (CR)", 
             "definition_sommaire": "Mécanisme de soutien où le producteur vend son énergie sur le marché et reçoit une prime de l'État.", 
             "analyse_detaillee": "Le producteur est exposé aux prix du marché Spot. Si le prix de marché moyen (M0) est inférieur à un tarif de référence (T) obtenu lors d'un appel d'offres, l'État verse une prime (T-M0). Si le prix de marché est supérieur, le producteur rembourse l'excédent (M0 - T).",
-            "image_url": "https://www.atlante.fr/wp-content/uploads/2020/09/remuneration_producteurs_complement-1024x655.png"
+            "image_url": "https://cdn.prod.website-files.com/677e903909238f8cd1300c4e/67cee58ef59bb87a7500460d_AD_4nXdoDDoFJqGFsbO1eT3VVNSex51vUk3U0a5pTsoG9tAR6W3honMscSQQxhPMoEIiqCqRTwljiqECeilKO5_1nIy3Mw3OPM1k0RcT2bxPENAmgGNGYR0GwGxmFkKprk3EpDFF-o5C.png"
           },
           { 
             "id": "courbe-de-charge", 
@@ -360,6 +360,7 @@
             "analyse_detaillee": "Le LCOE (€/MWh) est un indicateur qui permet de comparer le coût de production de différentes technologies (PV, éolien, gaz...). Il intègre le CAPEX initial, l'OPEX, le coût du financement et la production sur toute la durée de vie de l'actif.",
             "has_calculator": "lcoe"
           },
+          { "id": "m0", "terme": "M0", "definition_sommaire": "Prix moyen mensuel de l'électricité sur le marché spot Day-Ahead (J-1) d'EPEX Spot.", "analyse_detaillee": "Le M0 est la référence de prix de marché calculée par la CRE pour le mécanisme de Complément de Rémunération (CR). La prime versée au producteur correspond à la différence entre son tarif de référence (T) et ce prix de marché M0. Si le M0 est supérieur au tarif T, le producteur doit rembourser la différence à EDF Obligation d'Achat." },
           { 
             "id": "marche-spot", 
             "terme": "Marché Spot (EPEX Spot)", 
@@ -387,6 +388,7 @@
             ]
           },
           { "id": "opex", "terme": "OPEX (Operational Expenditure)", "definition_sommaire": "Dépenses d'exploitation récurrentes nécessaires au fonctionnement d'une centrale.", "analyse_detaillee": "L'OPEX comprend les coûts de maintenance, d'assurance, de supervision, les frais de gestion, les taxes foncières, etc." },
+          { "id": "pah", "terme": "PA(h)", "definition_sommaire": "Prix d'Achat horaire (€/MWh) du surplus d'une installation photovoltaïque en autoconsommation.", "analyse_detaillee": "Le PA(h) est le tarif auquel l'agrégateur achète l'électricité non consommée sur site et injectée sur le réseau par un producteur en autoconsommation (surplus). Ce tarif est fixé par le contrat entre le producteur et l'agrégateur. Il constitue le revenu de la vente de surplus pour le producteur." },
           { "id": "pcs", "terme": "PCS (Power Conversion System)", "definition_sommaire": "Système de conversion de puissance. Onduleur/chargeur bidirectionnel d'un BESS.", "analyse_detaillee": "Le PCS est l'équipement qui convertit le courant continu (DC) de la batterie en courant alternatif (AC) du réseau lors de la décharge, et inversement lors de la charge. Sa puissance (en kW ou MW) définit la puissance maximale de charge/décharge du BESS." },
           { 
             "id": "peak-shaving", 
@@ -395,6 +397,7 @@
             "analyse_detaillee": "Le peak shaving consiste à utiliser l'énergie de la batterie pour \"raboter\" les pointes de consommation du site. Cela permet de réduire la facture TURPE, notamment les pénalités de dépassement et potentiellement d'optimiser la puissance souscrite à la baisse.",
             "image_url": "https://www.researchgate.net/publication/373812706/figure/fig2/AS:11431281187620906@1694351512662/Peak-shaving-with-a-BESS.png"
           },
+          { "id": "pep", "terme": "PEP", "definition_sommaire": "Prix de Règlement des Écarts Positifs, calculé et publié par le Réseau de Transport d'Électricité (RTE).", "analyse_detaillee": "Le PEP est le prix auquel RTE valorise les écarts positifs des Responsables d'Équilibre (RE). Un écart positif se produit lorsqu'un RE injecte plus d'énergie sur le réseau que ce qu'il avait prévu, contribuant ainsi à l'équilibre du système. Ce prix constitue une rémunération pour les acteurs qui aident le réseau." },
           { "id": "ppa", "terme": "PPA (Power Purchase Agreement)", "definition_sommaire": "Contrat de vente d'électricité à long terme conclu directement entre un producteur et un consommateur final.", "analyse_detaillee": "Un PPA permet à un consommateur de sécuriser son approvisionnement en électricité verte à un prix fixe ou indexé sur le long terme, et au producteur de sécuriser ses revenus, facilitant ainsi le financement de sa centrale (\"bancabilité\")." },
           { "id": "pre", "terme": "PRE+/PRE-", "definition_sommaire": "Prix de Règlement des Écarts. Prix auquel RTE règle les écarts positifs (PRE+) et négatifs (PRE-).", "analyse_detaillee": "Le PRE est le prix auquel RTE valorise les actions d'équilibrage en temps réel. Le PRE+ rémunère les acteurs qui ont aidé le réseau (écart positif). Le PRE- pénalise ceux qui ont mis le réseau en difficulté (écart négatif)." },
           { "id": "ptf", "terme": "PTF (Proposition Technique et Financière)", "definition_sommaire": "Document émis par Enedis en réponse à une demande de raccordement, détaillant la solution technique et le coût.", "analyse_detaillee": "La PTF est l'offre formelle du gestionnaire de réseau pour le raccordement d'un projet. Son acceptation par le producteur vaut contrat." },
